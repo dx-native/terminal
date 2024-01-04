@@ -5,7 +5,7 @@
  */
 
 import {LitElement, html, css} from 'lit';
-import {customElement, property} from 'lit/decorators.js';
+import {customElement, property, queryAll} from 'lit/decorators.js';
 
 /**
  * macOS Template
@@ -68,6 +68,11 @@ const macOSStyles = css`
         margin: 25px;
     }
     .shadow { box-shadow: 0px 0px 10px rgba(0,0,0,.4)}
+    
+    ::slotted(.input)::before {
+        content: "sdf➜ ";
+        color: green;
+    }
 `;
 
 /**
@@ -81,11 +86,12 @@ const macOSStyles = css`
 export class DxTerminal extends LitElement {
 
     static override styles = [macOSStyles];
-    /**
-     * The name to say "Hello" to.
-     */
-    @property()
-    name = 'World';
+
+    @queryAll('div.input')
+    _userInput!: NodeListOf<HTMLElement>;
+
+    @queryAll('div.output')
+    _userOutput?: NodeListOf<HTMLElement>;
 
     /**
      * The number of times the button has been clicked.
