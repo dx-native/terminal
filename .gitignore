@@ -1,6 +1,7 @@
 /node_modules/
-/tests/
+/test/
 custom-elements.json
+dx-terminal.*
 notes
 # only generated for size check
 dx-terminal.bundled.js
