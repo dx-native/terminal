@@ -20,9 +20,19 @@ suite('dx-terminal', () => {
     assert.shadowDom.equal(
       el,
       `
-      <h1>Hello, World!</h1>
-      <button part="button">Click Count: 0</button>
-      <slot></slot>
+      <div class="terminal space shadow">
+        <div class="top">
+            <div class="btns">
+                <span class="circle red"></span>
+                <span class="circle yellow"></span>
+                <span class="circle green"></span>
+            </div>
+        <div class="title">bash -- 70x32</div>
+    </div>
+    <pre class="body">
+        <slot></slot>
+    </pre>
+    </div>
     `
     );
   });
@@ -32,31 +42,41 @@ suite('dx-terminal', () => {
     assert.shadowDom.equal(
       el,
       `
-      <h1>Hello, Test!</h1>
-      <button part="button">Click Count: 0</button>
-      <slot></slot>
+      <div class="terminal space shadow">
+        <div class="top">
+            <div class="btns">
+                <span class="circle red"></span>
+                <span class="circle yellow"></span>
+                <span class="circle green"></span>
+            </div>
+        <div class="title">bash -- 70x32</div>
+    </div>
+    <pre class="body">
+        <slot></slot>
+    </pre>
+    </div>
     `
     );
   });
 
-  test('handles a click', async () => {
-    const el = (await fixture(html`<dx-terminal></dx-terminal>`)) as DxTerminal;
-    const button = el.shadowRoot!.querySelector('button')!;
-    button.click();
-    await el.updateComplete;
-    assert.shadowDom.equal(
-      el,
-      `
-      <h1>Hello, World!</h1>
-      <button part="button">Click Count: 1</button>
-      <slot></slot>
-    `
-    );
-  });
+//   test('handles a click', async () => {
+//     const el = (await fixture(html`<dx-terminal></dx-terminal>`)) as DxTerminal;
+//     const button = el.shadowRoot!.querySelector('button')!;
+//     button.click();
+//     await el.updateComplete;
+//     assert.shadowDom.equal(
+//       el,
+//       `
+//       <h1>Hello, World!</h1>
+//       <button part="button">Click Count: 1</button>
+//       <slot></slot>
+//     `
+//     );
+//   });
 
   test('styling applied', async () => {
     const el = (await fixture(html`<dx-terminal></dx-terminal>`)) as DxTerminal;
     await el.updateComplete;
-    assert.equal(getComputedStyle(el).paddingTop, '16px');
+    assert.equal(getComputedStyle(el).paddingTop, '0px');
   });
 });
