@@ -5,7 +5,8 @@ title: <dx-terminal> ⌲ Home
 
 # &lt;dx-terminal>
 
-`<dx-terminal>` is an awesome element. It's a great introduction to building web components with LitElement, with nice documentation site as well.
+`<dx-terminal>` is a Native HTML element built with Lit. It is a wrapper for 
+displaying terminal emulation on a web page.
 
 ## As easy as HTML
 

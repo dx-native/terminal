@@ -10,7 +10,7 @@ title: <dx-terminal> ⌲ Install
 ## Local Installation
 
 ```bash
-npm i dx-terminal
+npm i @dx-native/terminal
 ```
 
 ## CDN
