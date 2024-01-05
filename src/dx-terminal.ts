@@ -1,16 +1,18 @@
 /**
  * @license
- * Copyright 2019 Google LLC
+ * Copyright 2023 cbCodeStudio LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
 import {LitElement, html, css} from 'lit';
-import {customElement, property, queryAll} from 'lit/decorators.js';
+import {customElement, property} from 'lit/decorators.js';
+import {queryAll} from 'lit/decorators/query-all.js';
 
 /**
  * macOS Template
  */
-const macOSTemplate = html`
+const macOSTemplate = (windowTitle: string) => {
+    return (html`
     <div class="terminal space shadow">
         <div class="top">
             <div class="btns">
@@ -18,12 +20,12 @@ const macOSTemplate = html`
                 <span class="circle yellow"></span>
                 <span class="circle green"></span>
             </div>
-        <div class="title">bash -- 70x32</div>
+        <div class="title">${windowTitle}</div>
     </div>
     <pre class="body">
         <slot></slot>
     </pre>
-    </div>`;
+    </div>`)};
 
 const macOSStyles = css`
     pre { margin: 0; padding: 0; } 
@@ -68,7 +70,11 @@ const macOSStyles = css`
         margin: 25px;
     }
     .shadow { box-shadow: 0px 0px 10px rgba(0,0,0,.4)}
-    
+    ::slotted(.input), ::slotted(.output) {
+        padding: 0;
+        margin: 0;
+        font-size: 18px;
+    }
     ::slotted(.input)::before {
         content: "sdf➜ ";
         color: green;
@@ -94,19 +100,19 @@ export class DxTerminal extends LitElement {
     _userOutput?: NodeListOf<HTMLElement>;
 
     /**
-     * The number of times the button has been clicked.
+     * The window title.
      */
-    @property({type: Number})
-    count = 0;
+    @property({ attribute: true })
+    window = 'macOS Terminal';
 
     osTemplate(os: string) {
         switch(os) { 
             case 'macOS': { 
-                return macOSTemplate;
+                return macOSTemplate(this.window);
                 break; 
             } 
             default: { 
-                return macOSTemplate;
+                return macOSTemplate(this.window);
                 break; 
             } 
          } 
