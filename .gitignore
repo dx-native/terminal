@@ -10,6 +10,10 @@ styles.js
 styles.js.map
 styles.d.ts
 styles.d.ts.map
+terminals.js
+terminals.js.map
+terminals.d.ts
+terminals.d.ts.map
 notes
 # only generated for size check
 dx-terminal.bundled.js
