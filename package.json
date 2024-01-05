@@ -1,6 +1,5 @@
 {
-  "name": "dx-native/terminal",
-  "private": true,
+  "name": "@dx-native/terminal",
   "version": "0.1.0",
   "description": "Native HTML web component for rendering a local OS terminal to a page",
   "main": "dx-terminal.js",
