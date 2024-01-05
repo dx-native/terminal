@@ -12,30 +12,32 @@ import {queryAll} from 'lit/decorators/query-all.js';
  * macOS Template
  */
 const macOSTemplate = (windowTitle: string) => {
-    return (html`
-    <div class="terminal space shadow">
+    return html` <div class="terminal shadow">
         <div class="top">
             <div class="btns">
                 <span class="circle red"></span>
                 <span class="circle yellow"></span>
                 <span class="circle green"></span>
             </div>
-        <div class="title">${windowTitle}</div>
-    </div>
-    <pre class="body">
-        <slot></slot>
-    </pre>
-    </div>`)};
+            <div class="title">${windowTitle}</div>
+        </div>
+        <pre class="body">
+            <slot></slot>
+        </pre>
+    </div>`;};
 
 const macOSStyles = css`
-    pre { margin: 0; padding: 0; } 
+    pre {
+        margin: 0;
+        padding: 0;
+    }
     .terminal {
         border-radius: 5px 5px 0 0;
         position: relative;
     }
     .terminal .top {
-        background: #E8E6E8;
-        color: black;
+        background: #514f51;
+        color: #e8e6e8;
         padding: 5px;
         border-radius: 5px 5px 0 0;
     }
@@ -53,30 +55,46 @@ const macOSStyles = css`
         border-width: 1px;
         border-style: solid;
     }
-    .title{
+    .title {
         text-align: center;
+        font-family: Verdana, sans-serif;
+        font-size: 12px;
+        font-weight: bold;
     }
-    .red { background: #EC6A5F; border-color: #D04E42; }
-    .green { background: #64CC57; border-color: #4EA73B; }
-    .yellow{ background: #F5C04F; border-color: #D6A13D; }
-    .clear{clear: both;}
+    .red {
+        background: #ec6a5f;
+        border-color: #d04e42;
+    }
+    .green {
+        background: #64cc57;
+        border-color: #4ea73b;
+    }
+    .yellow {
+        background: #f5c04f;
+        border-color: #d6a13d;
+    }
+    .clear {
+        clear: both;
+    }
     .terminal .body {
         background: black;
-        color: #7AFB4C;
-        padding: 8px;
+        color: #7afb4c;
+        padding: 4px;
         overflow: auto;
+        border-radius: 0 0 5px 5px;
     }
-    .space {
-        margin: 25px;
+    .shadow {
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
     }
-    .shadow { box-shadow: 0px 0px 10px rgba(0,0,0,.4)}
-    ::slotted(.input), ::slotted(.output) {
+    ::slotted(.dx-input),
+    ::slotted(.dx-output) {
         padding: 0;
+        color: white;
         margin: 0;
         font-size: 18px;
     }
-    ::slotted(.input)::before {
-        content: "sdf➜ ";
+    .dx-input::before {
+        content: '➜ ';
         color: green;
     }
 `;

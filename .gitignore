@@ -1,7 +1,11 @@
 /node_modules/
+/lib/
 /test/
 custom-elements.json
-dx-terminal.*
+dx-terminal.js
+dx-terminal.js.map
+dx-terminal.d.ts
+dx-terminal.d.ts.map
 notes
 # only generated for size check
 dx-terminal.bundled.js

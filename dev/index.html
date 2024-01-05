@@ -7,20 +7,13 @@
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="../node_modules/lit/polyfill-support.js"></script>
     <script type="module" src="../dx-terminal.js"></script>
-    <style>
-      p {
-        border: solid 1px blue;
-        padding: 8px;
-      }
-    </style>
   </head>
   <body>
     <div style="width: 50%">
-        <dx-terminal window="Mac OS" prompt="C:\>">
-          <div class="text input">ls -la</div>
-          <div class="text output">all the files</div>
+        <dx-terminal window="Mac OSX">
+            <div class="dx-input">ls -la</div>
+            <div class="dx-output">all the files</div>
         </dx-terminal>
-    </div>
-    
+    </div>  
   </body>
 </html>
