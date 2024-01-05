@@ -9,24 +9,9 @@ import {customElement, property} from 'lit/decorators.js';
 import {queryAll} from 'lit/decorators/query-all.js';
 
 /**
- * macOS Template
+ * Static Template
  */
-const macOSTemplate = (windowTitle: string) => {
-    return html` <div class="terminal shadow">
-        <div class="top">
-            <div class="btns">
-                <span class="circle red"></span>
-                <span class="circle yellow"></span>
-                <span class="circle green"></span>
-            </div>
-            <div class="title">${windowTitle}</div>
-        </div>
-        <pre class="body">
-            <slot></slot>
-        </pre>
-    </div>`;};
-
-const macOSStyles = css`
+const styles = css`
     pre {
         margin: 0;
         padding: 0;
@@ -97,6 +82,118 @@ const macOSStyles = css`
         content: '➜ ';
         color: green;
     }
+    @import url('https://fonts.googleapis.com/css?family=Ubuntu+Mono');
+    @import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
+    .Terminal {
+        /* width: 600px;
+        height: 400px; */
+        background: linear-gradient(45deg, #57003f 0%, #f57453 100%);
+        font-family: 'Ubuntu';
+        box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .Terminal__Toolbar {
+        background: linear-gradient(#504b45 0%, #3c3b37 100%);
+        width: 100%;
+        padding: 0 8px;
+        box-sizing: border-box;
+        height: 25px;
+        display: flex;
+        align-items: center;
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+    }
+
+    .Toolbar__buttons {
+        display: flex;
+        align-items: center;
+    }
+
+    .Toolbar__button {
+        width: 12px;
+        height: 12px;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 100%;
+        padding: 0;
+        font-size: 7px;
+        background: linear-gradient(#7d7871 0%, #595953 100%);
+        text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.2);
+        box-shadow: 0px 0px 1px 0px #41403a, 0px 1px 1px 0px #474642;
+        border: none;
+        margin-right: 4px;
+    }
+    .Toolbar__button:hover {
+        cursor: pointer;
+    }
+    .Toolbar__button--exit {
+        background: #f25d2b;
+        background: linear-gradient(#f37458 0%, #de4c12 100%);
+        background-clip: padding-box;
+    }
+    .Toolbar__button:focus {
+        outline: none;
+    }
+
+    .Toolbar__user {
+        color: #d5d0ce;
+        margin-left: 4px;
+        font-size: 12px;
+        line-height: 14px;
+        margin-bottom: 1px;
+    }
+    .Terminal__body {
+        background: rgba(56, 4, 40, 0.9);
+        height: calc(100% - 25px);
+        margin-top: -1px;
+        padding-top: 2px;
+        font-family: 'Ubuntu mono';
+    }
+    .Terminal__text {
+        color: #ddd;
+    }
+
+    .Terminal__Prompt {
+        margin-top: 10px;
+        display: flex;
+    }
+
+    .Prompt__user {
+        color: #87d441;
+    }
+    .Prompt__location {
+        color: #6d85a9;
+    }
+    .Prompt__dollar {
+        color: #ddd;
+    }
+    .Prompt__cursor {
+        height: 17px;
+        width: 8px;
+        background: white;
+        display: block;
+        margin-left: 8px;
+        animation: 2000ms ease infinite alternate blink;
+    }
+
+    @keyframes blink {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .Terminal {
+            max-height: 90%;
+            width: 95%;
+        }
+    }
 `;
 
 /**
@@ -108,8 +205,7 @@ const macOSStyles = css`
  */
 @customElement('dx-terminal')
 export class DxTerminal extends LitElement {
-
-    static override styles = [macOSStyles];
+    static override styles = [styles];
 
     @queryAll('div.input')
     _userInput!: NodeListOf<HTMLElement>;
@@ -118,40 +214,86 @@ export class DxTerminal extends LitElement {
     _userOutput?: NodeListOf<HTMLElement>;
 
     /**
+     * The operating system template.
+     */
+    @property({attribute: true})
+    os = 'macOS';
+
+    /**
      * The window title.
      */
-    @property({ attribute: true })
+    @property({attribute: true})
     window = 'macOS Terminal';
 
-    osTemplate(os: string) {
-        switch(os) { 
-            case 'macOS': { 
-                return macOSTemplate(this.window);
-                break; 
-            } 
-            default: { 
-                return macOSTemplate(this.window);
-                break; 
-            } 
-         } 
+    macOSTemplate() {
+        return html` <div class="terminal shadow">
+            <div class="top">
+                <div class="btns">
+                    <span class="circle red"></span>
+                    <span class="circle yellow"></span>
+                    <span class="circle green"></span>
+                </div>
+                <div class="title">${this.window}</div>
+            </div>
+            <pre class="body">
+                <slot></slot>
+            </pre>
+        </div>`;
+    }
+
+    ubuntuTemplate() {
+        return html`
+            <div class="Terminal">
+                <div class="Terminal__Toolbar">
+                    <div class="Toolbar__buttons">
+                        <button class="Toolbar__button Toolbar__button--exit">
+                            &#10005;
+                        </button>
+                        <button class="Toolbar__button">&#9472;</button>
+                        <button class="Toolbar__button">&#9723;</button>
+                    </div>
+                    <p class="Toolbar__user">cody@ubuntu:~</p>
+                </div>
+                <div class="Terminal__body">
+                    <div class="Terminal__text">Welcome to Ubuntu!</div>
+                    <div class="Terminal__Prompt">
+                        <span class="Prompt__user">cody@ubuntu:</span
+                        ><span class="Prompt__location">~</span
+                        ><span class="Prompt__dollar">$</span>
+                        <span class="Prompt__cursor"></span>
+                    </div>
+                </div>
+            </div>
+        `;
     }
 
     override render() {
-        return this.osTemplate('macOS');
+        switch (this.os.toLowerCase()) {
+            case 'macos': {
+                return this.macOSTemplate();
+                break;
+            }
+            case 'ubuntu': {
+                return this.ubuntuTemplate();
+                break;
+            }
+            default:
+                return this.macOSTemplate();
+        }
     }
 
-//   private _onClick() {
-//         this.count++;
-//         this.dispatchEvent(new CustomEvent('count-changed'));
-//   }
+    //   private _onClick() {
+    //         this.count++;
+    //         this.dispatchEvent(new CustomEvent('count-changed'));
+    //   }
 
-  /**
-   * Formats a greeting
-   * @param name The name to say "Hello" to
-   */
-  sayHello(name: string): string {
-    return `Hello, ${name}`;
-  }
+    /**
+     * Formats a greeting
+     * @param name The name to say "Hello" to
+     */
+    sayHello(name: string): string {
+        return `Hello, ${name}`;
+    }
 }
 
 declare global {
