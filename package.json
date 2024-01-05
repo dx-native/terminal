@@ -5,6 +5,11 @@
   "main": "dx-terminal.js",
   "module": "dx-terminal.js",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dx-native/terminal.git"
+  },
+  "homepage": "https://dx-native.github.io/terminal/",
   "scripts": {
     "build": "tsc",
     "build:watch": "tsc --watch",
