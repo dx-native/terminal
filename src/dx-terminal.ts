@@ -12,9 +12,7 @@ import dxStyles from './styles.js';
 /**
  * A terminal emulator element
  *
- * @fires count-changed - Indicates when the count changes
  * @slot - This element has a slot
- * @csspart button - The button
  */
 @customElement('dx-terminal')
 export class DxTerminal extends LitElement {
@@ -65,15 +63,11 @@ export class DxTerminal extends LitElement {
                         <button class="Toolbar__button">&#9472;</button>
                         <button class="Toolbar__button">&#9723;</button>
                     </div>
-                    <p class="Toolbar__user">cody@ubuntu:~</p>
+                    <p class="Toolbar__user">${this.window}</p>
                 </div>
                 <div class="Terminal__body">
-                    <div class="Terminal__text">Welcome to Ubuntu!</div>
                     <div class="Terminal__Prompt">
-                        <span class="Prompt__user">cody@ubuntu:</span
-                        ><span class="Prompt__location">~</span
-                        ><span class="Prompt__dollar">$</span>
-                        <span class="Prompt__cursor"></span>
+                        <slot></slot>
                     </div>
                 </div>
             </div>
