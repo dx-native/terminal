@@ -4,10 +4,11 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
-import {LitElement, html} from 'lit';
+import {LitElement} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
 import {queryAll} from 'lit/decorators/query-all.js';
 import dxStyles from './styles.js';
+import {macOSTemplate, ubuntuTemplate} from './terminals.js';
 
 /**
  * A terminal emulator element
@@ -36,56 +37,18 @@ export class DxTerminal extends LitElement {
     @property({attribute: true})
     window = 'macOS Terminal';
 
-    macOSTemplate() {
-        return html` <div class="terminal shadow">
-            <div class="top">
-                <div class="btns">
-                    <span class="circle red"></span>
-                    <span class="circle yellow"></span>
-                    <span class="circle green"></span>
-                </div>
-                <div class="title">${this.window}</div>
-            </div>
-            <pre class="body">
-                <slot></slot>
-            </pre>
-        </div>`;
-    }
-
-    ubuntuTemplate() {
-        return html`
-            <div class="Terminal">
-                <div class="Terminal__Toolbar">
-                    <div class="Toolbar__buttons">
-                        <button class="Toolbar__button Toolbar__button--exit">
-                            &#10005;
-                        </button>
-                        <button class="Toolbar__button">&#9472;</button>
-                        <button class="Toolbar__button">&#9723;</button>
-                    </div>
-                    <p class="Toolbar__user">${this.window}</p>
-                </div>
-                <div class="Terminal__body">
-                    <div class="Terminal__Prompt">
-                        <slot></slot>
-                    </div>
-                </div>
-            </div>
-        `;
-    }
-
     override render() {
         switch (this.os.toLowerCase()) {
             case 'macos': {
-                return this.macOSTemplate();
+                return macOSTemplate(this.window);
                 break;
             }
             case 'ubuntu': {
-                return this.ubuntuTemplate();
+                return ubuntuTemplate(this.window);
                 break;
             }
             default:
-                return this.macOSTemplate();
+                return macOSTemplate(this.window);
         }
     }
 
