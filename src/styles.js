@@ -12,7 +12,7 @@ const styles = css`
         margin: 0;
         font-size: 18px;
     }
-    .dx-input::before {
+    ::slotted(.dx-input)::before {
         content: '➜ ';
         color: green;
     }
@@ -72,7 +72,7 @@ const styles = css`
     .mac-shadow {
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
     }
-    
+
     @import url('https://fonts.googleapis.com/css?family=Ubuntu+Mono');
     @import url('https://fonts.googleapis.com/css?family=Ubuntu');
 
@@ -90,6 +90,7 @@ const styles = css`
         box-sizing: border-box;
         height: 25px;
         display: flex;
+        justify-content: space-between;
         align-items: center;
         border-top-left-radius: 6px;
         border-top-right-radius: 6px;
@@ -128,9 +129,11 @@ const styles = css`
         outline: none;
     }
 
-    .ubuntu-toolbar-user {
+    .ubuntu-toolbar-window {
         color: #d5d0ce;
-        margin-left: 4px;
+        text-align: center;
+        font-family: 'Ubuntu';
+        font-weight: bold;
         font-size: 12px;
         line-height: 14px;
         margin-bottom: 1px;
@@ -138,8 +141,11 @@ const styles = css`
     .ubuntu-terminal-body {
         background: rgba(56, 4, 40, 0.9);
         margin-top: -1px;
-        padding-top: 2px;
+        padding: 5px;
         font-family: 'Ubuntu mono';
+    }
+    .ubuntu-filler {
+        width: 48px;
     }
 `;
 

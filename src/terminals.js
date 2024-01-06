@@ -21,18 +21,19 @@ const ubuntuTemplate = (window) => {
         <div class="ubuntu-terminal">
             <div class="ubuntu-terminal-toolbar">
                 <div class="ubuntu-toolbar-buttons">
-                    <button class="ubuntu-toolbar-button ubuntu-toolbar-button-exit">
+                    <button
+                        class="ubuntu-toolbar-button ubuntu-toolbar-button-exit"
+                    >
                         &#10005;
                     </button>
                     <button class="ubuntu-toolbar-button">&#9472;</button>
                     <button class="ubuntu-toolbar-button">&#9723;</button>
                 </div>
-                <p class="ubuntu-toolbar-user">${window}</p>
+                <div class="ubuntu-toolbar-window">${window}</div>
+                <div class="ubuntu-filler">&nbsp;</div>
             </div>
             <div class="ubuntu-terminal-body">
-                <div class="ubuntu-terminal-prompt">
-                    <slot></slot>
-                </div>
+                <slot></slot>
             </div>
         </div>
     `;
