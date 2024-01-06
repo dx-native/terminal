@@ -1,16 +1,16 @@
 import {html} from 'lit';
 
 const macOSTemplate = (window) => {
-    return html` <div class="terminal shadow">
-        <div class="top">
-            <div class="btns">
-                <span class="circle red"></span>
-                <span class="circle yellow"></span>
-                <span class="circle green"></span>
+    return html` <div class="mac-terminal mac-shadow">
+        <div class="mac-top">
+            <div class="mac-btns">
+                <span class="mac-circle mac-red"></span>
+                <span class="mac-circle mac-yellow"></span>
+                <span class="mac-circle mac-green"></span>
             </div>
-            <div class="title">${window}</div>
+            <div class="mac-title">${window}</div>
         </div>
-        <pre class="body">
+        <pre class="mac-body">
             <slot></slot>
         </pre>
     </div>`;
@@ -18,19 +18,19 @@ const macOSTemplate = (window) => {
 
 const ubuntuTemplate = (window) => {
     return html`
-        <div class="Terminal">
-            <div class="Terminal__Toolbar">
-                <div class="Toolbar__buttons">
-                    <button class="Toolbar__button Toolbar__button--exit">
+        <div class="ubuntu-terminal">
+            <div class="ubuntu-terminal-toolbar">
+                <div class="ubuntu-toolbar-buttons">
+                    <button class="ubuntu-toolbar-button ubuntu-toolbar-button-exit">
                         &#10005;
                     </button>
-                    <button class="Toolbar__button">&#9472;</button>
-                    <button class="Toolbar__button">&#9723;</button>
+                    <button class="ubuntu-toolbar-button">&#9472;</button>
+                    <button class="ubuntu-toolbar-button">&#9723;</button>
                 </div>
-                <p class="Toolbar__user">${window}</p>
+                <p class="ubuntu-toolbar-user">${window}</p>
             </div>
-            <div class="Terminal__body">
-                <div class="Terminal__Prompt">
+            <div class="ubuntu-terminal-body">
+                <div class="ubuntu-terminal-prompt">
                     <slot></slot>
                 </div>
             </div>
