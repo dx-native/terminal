@@ -78,8 +78,8 @@ const styles = css`
 
     .ubuntu-terminal {
         position: relative;
-        background: linear-gradient(45deg, #57003f 0%, #f57453 100%);
         font-family: 'Ubuntu';
+        border-radius: 6px;
         box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.5);
     }
 
@@ -140,6 +140,8 @@ const styles = css`
     }
     .ubuntu-terminal-body {
         background: rgba(56, 4, 40, 0.9);
+        border-bottom-left-radius: 6px;
+        border-bottom-right-radius: 6px;
         margin-top: -1px;
         padding: 5px;
         font-family: 'Ubuntu mono';
