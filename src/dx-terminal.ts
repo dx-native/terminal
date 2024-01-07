@@ -19,6 +19,27 @@ import {macOSTemplate, ubuntuTemplate} from './terminals.js';
 export class DxTerminal extends LitElement {
     static override styles = dxStyles;
 
+    firstUpdated() {
+        if (this.shadowRoot) {
+            this.shadowRoot
+                .querySelector('.dx-clipboard')
+                .addEventListener('click', () => {
+                    // Copy the text inside the slot input
+                    console.log(
+                        this.shadowRoot
+                            .querySelector('slot')
+                            .assignedElements({flatten: true})
+                            .filter((e) => e.className === 'dx-input')
+                            .map((e) => e.innerHTML)
+                    );
+                    // navigator.clipboard.writeText(
+                    //     this.shadowRoot.querySelector('::slotted(.dx-input)')
+                    //         .innerHTML
+                    // );
+                });
+        }
+    }
+
     @queryAll('div.input')
     _userInput!: NodeListOf<HTMLElement>;
 

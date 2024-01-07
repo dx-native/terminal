@@ -5,6 +5,9 @@ const styles = css`
         margin: 0;
         padding: 0;
     }
+    .dx-clipboard {
+        width: 48px;
+    }
     ::slotted(.dx-input),
     ::slotted(.dx-output) {
         padding: 0;
@@ -145,9 +148,6 @@ const styles = css`
         margin-top: -1px;
         padding: 5px;
         font-family: 'Ubuntu mono';
-    }
-    .ubuntu-filler {
-        width: 48px;
     }
 `;
 
