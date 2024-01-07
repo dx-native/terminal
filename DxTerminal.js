@@ -1,3 +1,4 @@
+'use client';
 import * as React from 'react';
 import { createComponent } from '@lit/react';
 import { DxTerminal as Lit } from './dx-terminal.js';
