@@ -12,6 +12,9 @@ styles.d.ts.map
 terminals.js.map
 terminals.d.ts
 terminals.d.ts.map
+DxTerminal.d.ts
+DxTerminal.d.ts.map
+DxTerminal.js.map
 notes
 # only generated for size check
 dx-terminal.bundled.js

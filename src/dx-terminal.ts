@@ -9,6 +9,7 @@ import {customElement, property} from 'lit/decorators.js';
 import {queryAll} from 'lit/decorators/query-all.js';
 import dxStyles from './styles.js';
 import {macOSTemplate, ubuntuTemplate} from './terminals.js';
+import {DxTerminalComponent} from './DxTerminal.js';
 
 /**
  * A terminal emulator element
@@ -80,6 +81,8 @@ export class DxTerminal extends LitElement {
         return `Hello, ${name}`;
     }
 }
+
+export {DxTerminalComponent};
 
 declare global {
   interface HTMLElementTagNameMap {
