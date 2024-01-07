@@ -43,11 +43,9 @@
   ],
   "author": "cbCodeStudio, LLC",
   "license": "BSD-3-Clause",
-  "dependencies": {
-    "@lit/react": "^1.0.2",
-    "lit": "^3.0.0"
-  },
   "devDependencies": {
+    "@lit/react": "^1.0.2",
+    "lit": "^3.0.0",
     "@11ty/eleventy": "^1.0.1",
     "@11ty/eleventy-plugin-syntaxhighlight": "^4.0.0",
     "@custom-elements-manifest/analyzer": "^0.6.3",
