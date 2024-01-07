@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { createComponent } from '@lit/react';
-import { DxTerminal } from './dx-terminal.js';
-export const DxTerminalComponent = createComponent({
+import { DxTerminal as Lit } from './dx-terminal.js';
+export const DxTerminal = createComponent({
     tagName: 'dx-terminal',
-    elementClass: DxTerminal,
+    elementClass: Lit,
     react: React,
     events: {
         onactivate: 'activate',
